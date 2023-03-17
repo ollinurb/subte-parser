@@ -6,10 +6,10 @@ response = requests.get(url)
 
 soup = BeautifulSoup(response.content,'html.parser')
 
-divs = soup.find_all(id="LineaB")
-
 estados = soup.find_all("div", class_="linea-info")
 
-for est in estados:
-    print("ESTADO:")
-    print(est.contents)
+lineas = "ABCDEHP"
+for x,est in enumerate(estados):
+    print("ESTADO Linea " + lineas[x] + ":")
+    print(est.contents[1].contents[0])
+    print(est.contents[3].contents[0])
